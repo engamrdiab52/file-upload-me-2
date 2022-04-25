@@ -27,6 +27,9 @@ const uploadProductImageLocal = async (req, res) => {
 };
 
 const uploadProductImage = async (req, res) => {
+  console.log(req);
+  //According to documentation, you can't just upload file. You will have to either save it somewhere
+  // first (for example locally on disk), or convert it into base64.
   const result = await cloudinary.uploader.upload(
     req.files.image.tempFilePath,
     {

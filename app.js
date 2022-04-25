@@ -25,6 +25,9 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 //app.use(express.static('./public'));
 
 app.use(express.json());
+// We'll set the useTempFiles true for express-fileupload.
+// Setting it true means Images will be first uploade to system's temp folder
+//we need that for cloudinary 
 app.use(fileUpload({ useTempFiles: true }));
 
 app.get('/', (req, res) => {
@@ -36,7 +39,7 @@ app.use('/api/v1/products', productRouter);
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 const start = async () => {
   try {
